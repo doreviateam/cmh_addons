@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="monitor_view_kanban" model="ir.ui.view">
+            <field name="name">equipment.monitor.kanban</field>
+            <field name="model">equipment.monitor</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <field name="image_1920" widget="image" class="oe_avatar"/>
+                                </div>
+                                <div class="o_kanban_details">
+                                    <strong>
+                                        <field name="product_id"/>
+                                    </strong>
+                                    <div name="referenced_equipment" class="mt-1">
+                                        <b>Tracking:</b> <field name="equipment_count"/> Reference<span invisible="equipment_count &lt;= 1">s</span>
+                                    </div>
+                                    <div name="on_hand_equipment" class="mt-1">
+                                        <b>Free Qty:</b> <field name="free_qty"/> <field name="uom_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="monitor_view_form" model="ir.ui.view">
+            <field name="name">equipment.monitor.form</field>
+            <field name="model">equipment.monitor</field>
+            <field name="arch" type="xml">
+                <form string="Equipment Monitor Form">
+                    <sheet>
+                        <!-- Image Section -->
+                        <div>
+                            <field name="image_1920" widget="image" class="oe_avatar"/>
+                        </div>
+
+                        <!-- General Information Section -->
+                        <group>
+                            <group>
+                                <field name="product_id" widget="selection"/>
+                            </group>
+                        </group>
+
+                        <!-- Equipment Lines Section -->
+                        <newline/>
+                        <notebook>
+                            <page name="equipment_lines" string="Equipment Lines">
+                                <field name="line_ids" widget="one2many_list">
+                                    <tree>
+                                        <field name="equipment_monitor_id" optional="hide"/>
+                                        <field name="product_id"/>
+                                        <field name="serial_number"/>
+                                        <field name="product_number"/>
+                                        <field name="shortname" string="Owner"/>
+                                        <field name="fullname"/>
+                                        <field name="option_ids" widget="many2many_tags"/>
+                                    </tree>
+                                    <form>
+                                        <field name="image_1920" class="oe_avatar" widget="image"/>
+                                        <div class="oe_title">
+                                            <h1>
+                                                <field name="product_id"/>
+                                            </h1>
+                                        </div>
+                                        <group>
+                                            <group>
+                                                <field name="serial_number"/>
+                                                <field name="product_number"/>
+                                                <field name="owner_id"/>
+                                            </group>
+                                            <group>
+                                                <field name="option_ids" widget="many2many_tags"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+
+                    <!-- Chatter Section -->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_follower"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_equipment_fleet_user,Access Equipment Fleet Readonly,cmh_fleet.model_equipment_fleet,cmh_project.cmh_project_group_user,1,0,0,0
+access_equipment_fleet_manager,Access Equipment Fleet Manager,cmh_fleet.model_equipment_fleet,cmh_fleet.cmh_fleet_group_manager,1,1,1,1

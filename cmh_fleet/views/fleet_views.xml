@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="fleet_view_tree" model="ir.ui.view">
+            <field name="name">fleet_view_tree</field>
+            <field name="model">equipment.fleet</field>
+            <field name="arch" type="xml">
+                <tree string="fleet_tree">
+                    <field name="serial_number_id"/>
+                    <field name="product_number"/>
+                    <field name="product_id" readonly="True"/>
+                    <field name="product_qty"/>
+                    <field name="location_name"/>
+                    <field name="location_id" optional="hide"/>
+                    <field name="ref" optional="hide"/>
+                    <field name="equipment_category" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="fleet_view_form" model="ir.ui.view">
+            <field name="name">fleet_view_form</field>
+            <field name="model">equipment.fleet</field>
+            <field name="arch" type="xml">
+                <form string="fleet_form">
+                    <sheet>
+                        <field name="image_1920" widget="image" class="oe_avatar oe_clearfix"/>
+                        <group>
+                            <group>
+                                <field name="serial_number_id"/>
+                                <field name="product_id" readonly="True"/>
+                            </group>
+                            <group>
+                                <field name="product_number"/>
+                                <field name="location_name"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page name="general_information" string="General Information">
+                                <group>
+                                    <group>
+                                        <field name="ref"/>
+                                        <field name="product_qty"/>
+                                    </group>
+                                    <group>
+                                        <field name="location_id"/>
+                                        <field name="equipment_category"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_follower"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

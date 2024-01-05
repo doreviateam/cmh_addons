@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="ebm_1" model="equipment.brand_model">
+            <field name="name">250</field>
+            <field name="brand_id" ref="cmh_equipment.eb_1"/>
+        </record>
+    </data>
+</odoo>

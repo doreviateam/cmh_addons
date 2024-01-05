@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="cmh_root" name="CMH" web_icon="cmh_project,static/description/icon.png"/>
+    </data>
+</odoo>

@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <form string="Settings" class="oe_form_configuration" js_class="base_settings" delete="False">
+                    <field name="is_root_company" invisible="1" field_id="is_root_company_0"/>
+                    <app data-string="General Settings" string="General Settings" name="general_settings" logo="/base/static/description/settings.png">
+
+                        <div id="invite_users">
+                            <block title="Users" name="users_setting_container">
+                                <setting id="invite_users_setting">
+                                    <widget name="res_config_invite_users" widget_id="widget_1"/>
+                                </setting>
+                                <setting id="active_user_setting">
+                                    <span class="fa fa-lg fa-users" aria-label="Number of active users"/>
+                                    <field name="active_user_count" class="w-auto ps-3 fw-bold" field_id="active_user_count_0"/>
+                                    <span class="o_form_label" invisible="active_user_count &gt; '1'">
+                                        Active User
+                                    </span>
+                                    <span class="o_form_label" invisible="active_user_count &lt;= '1'">
+                                        Active Users
+                                    </span>
+                                    <a href="https://www.odoo.com/documentation/17.0/applications/general/users.html" title="Documentation" class="o_doc_link" target="_blank"/>
+                                    <br/>
+                                    <button name="69" icon="oi-arrow-right" type="action" string="Manage Users" class="btn-link o_web_settings_access_rights"/>
+                                </setting>
+                            </block>
+                        </div>
+
+                        <div id="languages">
+                            <block title="Languages" name="languages_setting_container">
+                                <setting id="languages_setting">
+                                    <!-- TODO This is not an ideal solution but it looks ok on the interface -->
+                                    <div class="w-50">
+                                        <field name="language_count" class="w-auto ps-1 fw-bold" field_id="language_count_0"/>
+                                        <span class="o_form_label" invisible="language_count &gt; '1'">
+                                            Language
+                                        </span>
+                                        <span class="o_form_label" invisible="language_count &lt;= '1'">
+                                            Languages
+                                        </span>
+                                    </div>
+                                    <div class="mt8">
+                                        <button name="43" icon="oi-arrow-right" type="action" string="Add Languages" class="btn-link"/>
+                                    </div>
+                                    <div class="mt8">
+                                        <button name="53" icon="oi-arrow-right" type="action" string="Manage Languages" class="btn-link"/>
+                                    </div>
+                                </setting>
+                            </block>
+                        </div>
+
+                        <div id="companies">
+                            <block title="Companies" name="companies_setting_container">
+                                <field name="company_id" invisible="1" on_change="1" can_create="True" can_write="True" field_id="company_id_0"/>
+                                <setting id="company_details_settings">
+                                    <field name="company_name" nolabel="1" class="fw-bold" field_id="company_name_0"/>
+                                    <br/>
+                                    <field name="company_informations" class="text-muted" style="width: 90%;" field_id="company_informations_0"/>
+                                    <br/>
+                                    <button name="open_company" icon="oi-arrow-right" type="object" string="Update Info" class="btn-link"/>
+                                </setting>
+                                <setting id="companies_setting">
+                                    <field name="company_count" nolabel="1" class="w-auto ps-1 fw-bold" field_id="company_count_0"/>
+                                    <span class="o_form_label" invisible="company_count &gt; '1'">
+                                        Company
+                                    </span>
+                                    <span class="o_form_label" invisible="company_count &lt;= '1'">
+                                        Companies
+                                    </span>
+                                    <br/>
+                                    <div class="mt8">
+                                        <button name="52" icon="oi-arrow-right" type="action" string="Manage Companies" class="btn-link"/>
+                                    </div>
+                                </setting>
+                                <setting id="document_layout_setting" string="Document Layout" help="Choose the layout of your documents" company_dependent="1">
+                                    <div class="content-group">
+                                        <div class="mt16">
+                                            <label for="external_report_layout_id" string="Layout" class="col-3 col-lg-3 o_light_label"/>
+                                            <field name="external_report_layout_id" domain="[('type','=', 'qweb')]" class="oe_inline" field_id="external_report_layout_id_0"/>
+                                        </div>
+                                            <button name="82" string="Configure Document Layout" type="action" class="oe_link" icon="oi-arrow-right"/>
+                                            <br/>
+                                            <button name="edit_external_header" string="Edit Layout" type="object" class="oe_link" icon="oi-arrow-right"/>
+                                            <br/>
+                                            <button name="80" string="Preview Document" type="action" class="oe_link" icon="oi-arrow-right"/>
+                                    </div>
+                                </setting>
+                    <setting string="Email Templates" help="Customize the look and feel of automated emails" id="mail_templates_setting">
+                        <div class="w-50 row">
+                            <span class="d-block w-75 py-2">Header Color</span>
+                            <field name="email_primary_color" class="d-block w-25 p-0 m-0" widget="color" field_id="email_primary_color_0"/>
+                        </div>
+                        <div class="w-50 row mt-1">
+                            <span class="d-block w-75 py-2">Button Color</span>
+                            <field name="email_secondary_color" class="d-block w-25 p-0 m-0" widget="color" field_id="email_secondary_color_0"/>
+                        </div>
+                        <button name="open_email_layout" icon="oi-arrow-right" type="object" string="Update Mail Layout" class="btn-link"/>
+                        <br/>
+                        <button name="open_mail_templates" icon="oi-arrow-right" type="object" string="Review All Templates" class="btn-link"/>
+                    </setting>
+                                <field name="company_id" invisible="1" on_change="1" can_create="True" can_write="True" field_id="company_id_1"/>
+                                </block>
+                        </div>
+                    <block title="Units of Measure" id="product_general_settings">
+                        <setting id="weight_uom_setting" string="Weight" help="Define your weight unit of measure">
+                            <field name="product_weight_in_lbs" class="o_light_label" widget="radio" options="{'horizontal': true}" field_id="product_weight_in_lbs_0"/>
+                        </setting>
+                        <setting id="manage_volume_uom_setting" string="Volume" help="Define your volume unit of measure">
+                            <field name="product_volume_volume_in_cubic_feet" class="o_light_label" widget="radio" options="{'horizontal': true}" field_id="product_volume_volume_in_cubic_feet_0"/>
+                        </setting>
+                    </block>
+                        <block title="Discuss" id="emails">
+                        <setting id="activities_setting" string="Activities" help="Configure your activity types">
+                            <div class="content-group">
+                                <div class="mt8">
+                                    <button name="119" string="Activity Types" type="action" class="oe_link" icon="oi-arrow-right"/>
+                                </div>
+                            </div>
+                        </setting>
+                        <setting id="email_servers_setting" title="Using your own email server is required to send/receive emails in Community and Enterprise versions. Online users already benefit from a ready-to-use email server (@mycompany.odoo.com)." documentation="/applications/general/email_communication/email_servers.html" help="Configure your own email servers">
+                            <field name="external_email_server_default" field_id="external_email_server_default_0"/>
+                            <div class="content-group mb-3" invisible="not external_email_server_default">
+                                <div>
+                                    <div class="mt8">
+                                        <button type="action" name="102" string="Incoming Email Servers" icon="oi-arrow-right" class="btn-link"/>
+                                    </div>
+                                    <div class="mt8">
+                                        <button type="action" name="17" string="Outgoing Email Servers" icon="oi-arrow-right" class="btn-link"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </setting>
+                        <setting id="email-alias-setting" string="Alias Domain" help="Use different domains for your mail aliases" company_dependent="1" documentation="/applications/general/email_communication/email_domain.html#be-spf-compliant">
+                            <span class="me-1">@</span>
+                            <field name="alias_domain_id" placeholder="e.g. domain.com" options="{'no_create_edit': True}" can_create="True" can_write="True" field_id="alias_domain_id_0"/>
+                        </setting>
+                        <setting string="Use a Gmail Server" help="Send and receive emails through your Gmail account." documentation="https://console.developers.google.com/" invisible="not external_email_server_default">
+                            <field name="module_google_gmail" on_change="1" field_id="module_google_gmail_0"/>
+                            <div class="row mt16" id="gmail_client_identifier">
+                        <label string="ID" for="google_gmail_client_identifier" class="col-lg-3 o_light_label"/>
+                        <field name="google_gmail_client_identifier" class="ms-2" placeholder="ID of your Google app" field_id="google_gmail_client_identifier_0"/>
+                    </div>
+                    <div class="row mt16" id="gmail_client_secret">
+                        <label string="Secret" for="google_gmail_client_secret" class="col-lg-3 o_light_label"/>
+                        <field name="google_gmail_client_secret" password="True" class="ms-2" placeholder="Secret of your Google app" field_id="google_gmail_client_secret_0"/>
+                    </div>
+                </setting>
+                        <setting id="email-outlook-setting" string="Use an Outlook Server" help="Send and receive emails through your Outlook account." documentation="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app" invisible="not external_email_server_default">
+                            <field name="module_microsoft_outlook" on_change="1" field_id="module_microsoft_outlook_0"/>
+                            <div class="content-group" id="msg_module_microsoft_outlook" invisible="not module_microsoft_outlook">
+                                <div class="mt16 text-warning">
+                                    <strong>Save</strong> this page and come back here to set up the feature.
+                                </div>
+                            </div>
+                        </setting>
+                        <setting help="Add your twilio credentials for ICE servers">
+                            <field name="use_twilio_rtc_servers" field_id="use_twilio_rtc_servers_0"/>
+                            <div class="content-group" invisible="not use_twilio_rtc_servers">
+                                <div class="row mt16" id="mail_twilio_sid">
+                                    <label for="twilio_account_sid" class="col-lg-3"/>
+                                    <field name="twilio_account_sid" placeholder="e.g. ACd5543a0b450ar4c7t95f1b6e8a39t543" field_id="twilio_account_sid_0"/>
+                                </div>
+                                <div class="row mt16" id="mail_twilio_auth_token">
+                                    <label for="twilio_account_token" class="col-lg-3"/>
+                                    <field name="twilio_account_token" placeholder="e.g. 65ea4f9e948b693N5156F350256bd152" field_id="twilio_account_token_0"/>
+                                </div>
+                            </div>
+                        </setting>
+                        <setting string="Custom ICE server list" help="Configure your ICE server list for webRTC">
+                            <div class="content-group">
+                                <div class="row col-lg-4">
+                                    <button type="action" name="111" string="ICE Servers" icon="oi-arrow-right" class="btn-link"/>
+                                </div>
+                            </div>
+                        </setting>
+                        <setting id="restrict_template_rendering_setting" help="Restrict mail templates edition and QWEB placeholders usage.">
+                            <field name="restrict_template_rendering" field_id="restrict_template_rendering_0"/>
+                        </setting>
+                        <setting id="tenor_api_key" string="Tenor GIF API key" help="Add a Tenor GIF API key to enable GIFs support." documentation="https://developers.google.com/tenor/guides/quickstart#setup">
+                            <field name="tenor_api_key" placeholder="Paste your API key" field_id="tenor_api_key_0"/>
+                        </setting>
+                        <setting id="tenor_content_filter" string="Tenor GIF content filter" help="Select the content filter used for filtering GIFs" documentation="https://developers.google.com/tenor/guides/content-filtering">
+                            <field name="tenor_content_filter" field_id="tenor_content_filter_0"/>
+                        </setting>
+                        <setting id="tenor_gif_limit" string="Tenor GIF limits" help="Fetch up to the specified number of GIF.">
+                            <field name="tenor_gif_limit" field_id="tenor_gif_limit_0"/>
+                        </setting>
+                        <setting string="Message Translation" help="Google Translate Integration" id="message_translation_setting" documentation="https://cloud.google.com/translate/docs/setup">
+                            <field name="google_translate_api_key" placeholder="Paste your API key" field_id="google_translate_api_key_0"/>
+                        </setting>
+                    </block>
+                <div id="statistics">
+                    <block title="Statistics" id="statistics_div">
+                        <setting string="Digest Email" help="Add new users as recipient of a periodic email with key metrics" documentation="/applications/general/digest_emails.html" title="New users are automatically added as recipient of the following digest email." name="digest_email_setting_container">
+                            <field name="digest_emails" field_id="digest_emails_0"/>
+                            <div class="content-group" invisible="not digest_emails">
+                                <div class="mt16">
+                                    <label for="digest_id" class="o_light_label mr8"/>
+                                    <field name="digest_id" class="oe_inline" can_create="True" can_write="True" field_id="digest_id_0"/>
+                                </div>
+                                <div class="mt8">
+                                    <button type="action" name="194" string="Configure Digest Emails" icon="oi-arrow-right" class="btn-link"/>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+                </div>
+                <div id="contacts_settings">
+                            <block title="Contacts" name="contacts_setting_container">
+                                <setting id="sms" string="Send SMS" documentation="/applications/marketing/sms_marketing/pricing/pricing_and_faq.html" help="Send texts to your contacts">
+                <widget name="iap_buy_more_credits" service_name="sms" hide_service="1" widget_id="widget_2"/></setting>
+                                <setting help="Automatically enrich your contact base with company data" title="When populating your address book, Odoo provides a list of matching companies. When selecting one item, the company data and logo are auto-filled." id="partner_autocomplete">
+                                    <field name="module_partner_autocomplete" on_change="1" field_id="module_partner_autocomplete_0"/>
+                <widget name="iap_buy_more_credits" service_name="partner_autocomplete" hide_service="1" widget_id="widget_3"/>
+                                </setting>
+                        </block>
+                <div id="iap_portal">
+                    <block class="iap_portal" name="iap_purchases_setting_container">
+                        <setting id="iap_credits_setting" string="Odoo IAP" help="View your IAP Services and recharge your credits" documentation="/applications/general/in_app_purchase.html">
+                            <button name="iap.iap_account_action" icon="oi-arrow-right" type="action" string="View My Services" class="btn-link"/>
+                        </setting>
+                    </block>
+                </div>
+                    </div>
+
+                    <block title="Permissions" id="user_default_rights">
+                    <setting id="login_documents" title="To send invitations in B2B mode, open a contact or select several ones in list view and click on 'Portal Access Management' option in the dropdown menu *Action*." help="Let your customers log in to see their documents">
+                        <field name="auth_signup_uninvited" class="o_light_label" widget="radio" options="{'horizontal': true}" required="True" field_id="auth_signup_uninvited_0"/>
+                        <div class="content-group" invisible="auth_signup_uninvited == 'b2b'">
+                            <div class="mt8">
+                                <button type="object" name="action_open_template_user" string="Default Access Rights" icon="oi-arrow-right" class="btn-link"/>
+                            </div>
+                        </div>
+                    </setting>
+                    <setting string="Password Reset" help="Enable password reset from Login page" id="enable_password_reset">
+                        <field name="auth_signup_reset_password" field_id="auth_signup_reset_password_0"/>
+                    </setting>
+                        <setting string="Default Access Rights" help="Set custom access rights for new users" title="By default, new users get highest access rights for all installed apps." id="access_rights">
+                            <field name="user_default_rights" field_id="user_default_rights_0"/>
+                            <div class="content-group" invisible="not user_default_rights">
+                                <div class="mt8">
+                                    <button type="object" name="open_default_user" string="Default Access Rights" icon="oi-arrow-right" class="btn-link"/>
+                                </div>
+                            </div>
+                        </setting>
+                        <setting string="API Keys" help="API Keys allow your users to access Odoo with external tools when multi-factor authentication is enabled.">
+                            <button type="action" name="72" string="Manage API Keys" icon="oi-arrow-right" class="btn-link"/>
+                    <div>
+                        <div class="mt16 content-group">
+                            <field name="portal_allow_api_keys" field_id="portal_allow_api_keys_0"/>
+                            <label string="Customers can generate API Keys" for="portal_allow_api_keys"/>
+                        </div>
+                    </div>
+                        </setting>
+                        <setting string="Import &amp; Export" help="Allow users to import data from CSV/XLS/XLSX/ODS files" documentation="/applications/general/export_import_data.html" id="allow_import">
+                            <field name="module_base_import" on_change="1" field_id="module_base_import_0"/>
+                        </setting>
+                        <setting id="feedback_motivate_setting" help="Add fun feedback and motivate your employees">
+                            <field name="show_effect" field_id="show_effect_0"/>
+                        </setting>
+                    </block>
+                <div id="mobile_settings">
+                    <block title="Mobile">
+                        <setting help="Receive notifications on Android and iOS application">
+                                <field name="enable_ocn" field_id="enable_ocn_0"/>
+                        </setting>
+                        <setting help="If disabled, you won't be able to open external URL's in the Android/iOS mobile app (e.g. &quot;View Task&quot; button in email).">
+                                <field name="disable_redirect_firebase_dynamic_link" field_id="disable_redirect_firebase_dynamic_link_0"/>
+                        </setting>
+                    </block>
+                </div>
+
+                    <block title="Progressive Web App" id="pwa_settings">
+                        <setting help="This name will be used for the application when Odoo is installed through the browser.">
+                            <field name="web_app_name" placeholder="Odoo" field_id="web_app_name_0"/>
+                        </setting>
+                    </block>
+
+                        <block title="Integrations" name="integration">
+                            <setting string="Mail Plugin" documentation="/applications/productivity/mail_plugins.html" help="Integrate with mail client plugins" id="mail_pluggin_setting">
+                                <field name="module_mail_plugin" on_change="1" field_id="module_mail_plugin_0"/>
+                            </setting>
+                            <setting id="product_get_pic_setting" string="Google Images" help="Get product pictures using Barcode" documentation="/applications/sales/sales/products_prices/products/product_images.html">
+                        <field name="module_product_images" on_change="1" field_id="module_product_images_0"/>
+                        <div class="content-group mt16" invisible="not module_product_images" id="msg_module_product_images">
+                            <div class="mt16 text-warning">
+                                <strong>Save</strong> this page and come back
+                                here to set up the feature.
+                            </div>
+                        </div>
+                    </setting>
+                 <setting string="OAuth Authentication" help="Use external accounts to log in (Google, Facebook, etc.)" id="module_auth_oauth">
+                                <field name="module_auth_oauth" on_change="1" field_id="module_auth_oauth_0"/>
+                                <div class="content-group mt16" invisible="not module_auth_oauth" id="msg_module_auth_oauth">
+                                    <div class="mt16 text-warning"><strong>Save</strong> this page and come back here to set up the feature.</div>
+                                </div>
+                            </setting>
+                            <setting string="LDAP Authentication" help="Use LDAP credentials to log in" documentation="/applications/general/auth/ldap.html" id="module_auth_ldap">
+                                <field name="module_auth_ldap" on_change="1" field_id="module_auth_ldap_0"/>
+                                <div class="content-group" invisible="not module_auth_ldap" id="auth_ldap_warning">
+                                    <div class="mt16 text-warning"><strong>Save</strong> this page and come back here to set up the feature.</div>
+                                </div>
+                            </setting>
+                            <setting documentation="/applications/websites/website/optimize/unsplash.html" help="Find free high-resolution images from Unsplash" id="unsplash">
+                                <field name="module_web_unsplash" on_change="1" field_id="module_web_unsplash_0"/>
+                                <div invisible="not module_web_unsplash">
+                    <div class="content-group mt16">
+                        <label for="unsplash_access_key" class="o_light_label mr8"/>
+                        <field name="unsplash_access_key" field_id="unsplash_access_key_0"/>
+                    </div>
+                    <div class="content-group">
+                        <label for="unsplash_app_id" class="o_light_label mr8"/>
+                        <field name="unsplash_app_id" field_id="unsplash_app_id_0"/>
+                    </div>
+                    <div>
+                        <a href="https://www.odoo.com/documentation/17.0/applications/websites/website/optimize/unsplash.html#generate-an-unsplash-access-key" class="oe_link" target="_blank">
+                            <i class="oi oi-arrow-right"/> Generate an Access Key
+                        </a>
+                    </div>
+                </div>
+            </setting>
+                            <setting string="Geo Localization" help="GeoLocalize your partners" id="base_geolocalize">
+                                <field name="module_base_geolocalize" on_change="1" field_id="module_base_geolocalize_0"/>
+                                <div class="content-group" invisible="not module_base_geolocalize" name="base_geolocalize_warning">
+                                    <div class="mt16 text-warning"><strong>Save</strong> this page and come back here to choose your Geo Provider.</div>
+                                </div>
+                            </setting>
+                <setting id="token_map_view" string="Map Routes" help="Set a MapBox account to activate routes and style">
+                    <div class="content-group">
+                        <label for="map_box_token" string="Token" class="mr8"/>
+                        <field name="map_box_token" on_change="1" field_id="map_box_token_0"/>
+                        <div class="text-start" style="position:relative;">
+                            <a class="oe_link" href="https://account.mapbox.com/auth/signup/" target="_blank">
+                                <i class="oi oi-arrow-right"/>
+                                Sign up to MapBox to get a free token
+                            </a>
+                        </div>
+                    </div>
+                </setting>
+                            <setting help="Protect your forms from spam and abuse." id="recaptcha">
+                                <field name="module_google_recaptcha" on_change="1" field_id="module_google_recaptcha_0"/>
+                                <div class="content-group" invisible="not module_google_recaptcha" id="recaptcha_warning">
+                                    <div class="mt16 text-warning"><strong>Save</strong> this page and come back here to set up reCaptcha.</div>
+                                </div>
+                            </setting>
+                            <setting help="Protect your forms with CF Turnstile." id="cf-turnstile">
+                                <field name="module_website_cf_turnstile" on_change="1" field_id="module_website_cf_turnstile_0"/>
+                                <div class="content-group" invisible="not module_website_cf_turnstile" id="turnstile_warning">
+                                    <div class="mt16 text-warning"><strong>Save</strong> this page and come back here to set up Cloudflare turnstile.</div>
+                                </div>
+                            </setting>
+
+                        </block>
+
+                        <block title="Performance" name="performance">
+                            <setting id="profiling_enabled_until" help="Enable the profiling tool. Profiling may impact performance while being active.">
+                                <field name="profiling_enabled_until" field_id="profiling_enabled_until_0"/>
+                            </setting>
+                        </block>
+
+                        <widget name="res_config_dev_tool" widget_id="widget_4"/>
+                        <div id="about">
+                            <block title="About" name="about_setting_container">
+                                <setting id="appstore">
+                                    <div class="d-flex">
+                                        <div>
+                                            <!-- FIXME Those links are defined directly in the template which means that we will have to
+                                            update the template code is the link ever changes -->
+                                            <a class="d-block mx-auto" href="https://play.google.com/store/apps/details?id=com.odoo.mobile" target="blank">
+                                                <img alt="On Google Play" class="d-block mx-auto img img-fluid" src="/base_setup/static/src/img/google_play.png"/>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a class="d-block mx-auto" href="https://itunes.apple.com/us/app/odoo/id1272543640" target="blank">
+                                                <img alt="On Apple Store" class="d-block mx-auto img img-fluid" src="/base_setup/static/src/img/app_store.png"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </setting>
+                                <widget name="res_config_edition" widget_id="widget_5"/>
+                            </block>
+                        </div>
+                    </app>
+                    <app data-string="Inventory" string="Inventory" name="stock">
+                        <block title="Operations" name="operations_setting_container">
+                            <setting id="product_packs_tracking" documentation="/applications/inventory_and_mrp/inventory/management/products/usage.html#packages" title="Put your products in packs (e.g. parcels, boxes) and track them" help="Put your products in packs (e.g. parcels, boxes) and track them">
+                                <field name="group_stock_tracking_lot" field_id="group_stock_tracking_lot_0"/>
+                            </setting>
+                            <setting id="process_transfers" help="Process transfers in batch per worker" documentation="/applications/inventory_and_mrp/inventory/management/misc/batch_transfers.html">
+                                <field name="module_stock_picking_batch" on_change="1" field_id="module_stock_picking_batch_0"/>
+                                <div class="row mt-2" invisible="not module_stock_picking_batch">
+                                    <field name="group_stock_picking_wave" class="col flex-grow-0 ml16 mr0 pe-2" field_id="group_stock_picking_wave_0"/>
+                                    <div class="col ps-0">
+                                        <label for="group_stock_picking_wave"/>
+                                        <div class="text-muted">Process operations in wave transfers</div>
+                                    </div>
+                                </div>
+                            </setting>
+                            <setting id="warning_info" string="Warnings" help="Get informative or blocking warnings on partners">
+                                <field name="group_warning_stock" field_id="group_warning_stock_0"/>
+                            </setting>
+                            <setting id="quality_control" help="Add quality checks to your transfer operations" documentation="/applications/inventory_and_mrp/manufacturing/management/quality_control.html">
+                                <field name="module_quality_control" widget="upgrade_boolean" on_change="1" field_id="module_quality_control_0"/>
+                                <div class="row mt-2" invisible="not module_quality_control">
+                                    <field name="module_quality_control_worksheet" widget="upgrade_boolean" class="col flex-grow-0 ml16 mr0 pe-2" on_change="1" field_id="module_quality_control_worksheet_0"/>
+                                    <div class="col ps-0">
+                                        <label for="module_quality_control_worksheet"/>
+                                        <div class="text-muted">
+                                            Create customizable worksheets for your quality checks
+                                        </div>
+                                    </div>
+                                </div>
+                            </setting>
+                            <setting id="annual_inventory_date" string="Annual Inventory Day and Month" help="Day and month that annual inventory counts should occur.">
+                                <div class="content-group">
+                                    <field name="annual_inventory_day" class="o_light_label" style="width: 30px;" field_id="annual_inventory_day_0"/>
+                                    <field name="annual_inventory_month" class="o_light_label" field_id="annual_inventory_month_0"/>
+                                </div>
+                            </setting>
+                            <setting id="reception_report" help="View and allocate received quantities.">
+                                <field name="group_stock_reception_report" field_id="group_stock_reception_report_0"/>
+                            </setting>
+                        </block>
+                        <block title="Barcode" name="barcode_setting_container">
+                            <setting id="process_operations_barcodes" help="Process operations faster with barcodes" company_dependent="1" documentation="/applications/inventory_and_mrp/inventory/barcode/setup/software.html">
+                                <field name="module_stock_barcode" widget="upgrade_boolean" on_change="1" field_id="module_stock_barcode_0"/>
+                            </setting>
+                        </block>
+                        <block title="Shipping" name="shipping_setting_container">
+                            <setting id="stock_move_email" company_dependent="1" string="Email Confirmation" help="Send an automatic confirmation email when Delivery Orders are done">
+                                <field name="stock_move_email_validation" field_id="stock_move_email_validation_0"/>
+                            </setting>
+                            <setting id="stock_sms" company_dependent="1" help="Send an automatic confirmation SMS Text Message when Delivery Orders are done" string="SMS Confirmation">
+                                <field name="stock_move_sms_validation" field_id="stock_move_sms_validation_0"/>
+                <div class="row mt16" invisible="not stock_move_sms_validation">
+                    <label for="stock_sms_confirmation_template_id" string="SMS Template" class="col-lg-4 o_light_label"/>
+                    <field name="stock_sms_confirmation_template_id" class="oe_inline" required="stock_move_sms_validation" context="{'default_model': 'stock.picking'}" can_create="True" can_write="True" field_id="stock_sms_confirmation_template_id_0"/>
+                </div>
+                <widget name="iap_buy_more_credits" service_name="sms" invisible="not stock_move_sms_validation" widget_id="widget_6"/>
+            </setting>
+                            <setting id="signature_delivery_orders" help="Require a signature on your delivery orders">
+                                <field name="group_stock_sign_delivery" field_id="group_stock_sign_delivery_0"/>
+                            </setting>
+                            <setting id="delivery" help="Compute shipping costs" title="Shipping connectors allow to compute accurate shipping costs, print shipping labels and request carrier picking at your warehouse to ship to the customer. Apply shipping connector from delivery methods.">
+                                <field name="module_delivery" on_change="1" field_id="module_delivery_0"/>
+                            </setting>
+                        </block>
+                        <block title="Shipping Connectors" name="shipping_connectors_setting_container">
+                            <setting id="compute_shipping_costs_ups" documentation="/applications/inventory_and_mrp/inventory/shipping/setup/third_party_shipper.html" help="Compute shipping costs and ship with UPS">
+                                <field name="module_delivery_ups" widget="upgrade_boolean" on_change="1" field_id="module_delivery_ups_0"/>
+                            </setting>
+                            <setting id="compute_shipping_costs_dhl" help=" Compute shipping costs and ship with DHL" documentation="/applications/inventory_and_mrp/inventory/shipping/setup/third_party_shipper.html">
+                                <field name="module_delivery_dhl" widget="upgrade_boolean" on_change="1" field_id="module_delivery_dhl_0"/>
+                            </setting>
+                            <setting id="compute_shipping_costs_fedex" help="Compute shipping costs and ship with FedEx" documentation="/applications/inventory_and_mrp/inventory/shipping/setup/third_party_shipper.html">
+                                <field name="module_delivery_fedex" widget="upgrade_boolean" on_change="1" field_id="module_delivery_fedex_0"/>
+                            </setting>
+                            <setting id="compute_shipping_costs_usps" help="Compute shipping costs and ship with USPS" documentation="/applications/inventory_and_mrp/inventory/shipping/setup/third_party_shipper.html">
+                                <field name="module_delivery_usps" widget="upgrade_boolean" on_change="1" field_id="module_delivery_usps_0"/>
+                            </setting>
+                            <setting id="compute_shipping_costs_bpost" help="Compute shipping costs and ship with bpost" documentation="/applications/inventory_and_mrp/inventory/shipping/setup/third_party_shipper.html">
+                                <field name="module_delivery_bpost" widget="upgrade_boolean" on_change="1" field_id="module_delivery_bpost_0"/>
+                            </setting>
+
+                            <setting id="compute_shipping_costs_easypost" help="Compute shipping costs and ship with Easypost" documentation="/applications/inventory_and_mrp/inventory/shipping/setup/third_party_shipper.html">
+                                <field name="module_delivery_easypost" widget="upgrade_boolean" on_change="1" field_id="module_delivery_easypost_0"/>
+                            </setting>
+                            <setting id="compute_shipping_costs_sendcloud" help="Compute shipping costs and ship with Sendcloud" documentation="/applications/inventory_and_mrp/inventory/shipping/setup/third_party_shipper.html">
+                                <field name="module_delivery_sendcloud" widget="upgrade_boolean" on_change="1" field_id="module_delivery_sendcloud_0"/>
+                            </setting>
+                            <setting id="compute_shipping_costs_shiprocket" help="Compute shipping costs and ship with Shiprocket" documentation="/applications/inventory_and_mrp/inventory/shipping/setup/third_party_shipper.html">
+                                <field name="module_delivery_shiprocket" widget="upgrade_boolean" on_change="1" field_id="module_delivery_shiprocket_0"/>
+                            </setting>
+                        </block>
+                        <block title="Products" name="product_setting_container">
+                            <setting id="product_attributes" help="Set product attributes (e.g. color, size) to manage variants" documentation="/applications/sales/sales/products_prices/products/variants.html">
+                                <field name="group_product_variant" on_change="1" field_id="group_product_variant_0"/>
+                                <div class="content-group">
+                                    <div class="mt8" invisible="not group_product_variant">
+                                        <button name="160" icon="oi-arrow-right" type="action" string="Attributes" class="btn-link"/>
+                                    </div>
+                                </div>
+                            </setting>
+                            <setting id="sell_purchase_uom" help="Sell and purchase products in different units of measure" documentation="/applications/inventory_and_mrp/inventory/management/products/uom.html">
+                                <field name="group_uom" field_id="group_uom_0"/>
+                                <div class="content-group">
+                                    <div class="mt8" invisible="not group_uom">
+                                        <button name="78" icon="oi-arrow-right" type="action" string="Units Of Measure" class="btn-link"/>
+                                    </div>
+                                </div>
+                            </setting>
+                            <setting id="manage_product_packaging" title="Manage product packagings (e.g. pack of 6 bottles, box of 10 pieces)" help="Manage product packagings (e.g. pack of 6 bottles, box of 10 pieces)" documentation="/applications/inventory_and_mrp/inventory/management/products/usage.html#packaging">
+                                <field name="group_stock_packaging" field_id="group_stock_packaging_0"/>
+                                <div class="content-group">
+                                    <div class="mt8" invisible="not group_stock_packaging">
+                                        <button name="162" icon="oi-arrow-right" type="action" string="Product Packagings" class="btn-link"/>
+                                    </div>
+                                </div>
+                            </setting>
+                        </block>
+                        <block title="Traceability" id="production_lot_info">
+                            <setting id="full_traceability" help="Get a full traceability from vendors to customers" documentation="/applications/inventory_and_mrp/inventory/management/lots_serial_numbers/differences.html">
+                                <field name="group_stock_production_lot" on_change="1" field_id="group_stock_production_lot_0"/>
+                                <div class="row mt-2" invisible="not group_stock_production_lot">
+                                    <field name="group_stock_lot_print_gs1" class="col flex-grow-0 ml16 mr0 pe-2" field_id="group_stock_lot_print_gs1_0"/>
+                                    <div class="col ps-0">
+                                        <label for="group_stock_lot_print_gs1"/>
+                                        <div class="text-muted">Use GS1 nomenclature datamatrix whenever barcodes are printed for lots and serial numbers.</div>
+                                    </div>
+                                </div>
+                            </setting>
+                            <setting id="expiration_dates_serial_numbers" help="Set expiration dates on lots &amp; serial numbers" invisible="not group_stock_production_lot" title="Track following dates on lots &amp; serial numbers: best before, removal, end of life, alert. Such dates are set automatically at lot/serial number creation based on values set on the product (in days)." documentation="/applications/inventory_and_mrp/inventory/management/lots_serial_numbers/expiration_dates.html">
+                                <field name="module_product_expiry" on_change="1" field_id="module_product_expiry_0"/>
+                            </setting>
+                            <setting help="Lots &amp; Serial numbers will appear on the delivery slip" invisible="not group_stock_production_lot" id="group_lot_on_delivery_slip">
+                                <field name="group_lot_on_delivery_slip" field_id="group_lot_on_delivery_slip_0"/>
+                            </setting>
+                            <setting id="owner_stored_products" help="Set owner on stored products" documentation="/applications/inventory_and_mrp/inventory/management/misc/owned_stock.html">
+                                <field name="group_stock_tracking_owner" field_id="group_stock_tracking_owner_0"/>
+                            </setting>
+                        </block>
+                        <block title="Warehouse" name="warehouse_setting_container">
+                            <setting id="track_product_location" help="Track product location in your warehouse" documentation="/applications/inventory_and_mrp/inventory/management/warehouses/warehouses_locations.html" title="Store products in specific locations of your warehouse (e.g. bins, racks) and to track inventory accordingly.">
+                                <field name="group_stock_multi_locations" on_change="1" field_id="group_stock_multi_locations_0"/>
+                                <div class="content-group">
+                                    <div class="mt8" invisible="not group_stock_multi_locations">
+                                        <button name="272" icon="oi-arrow-right" type="action" string="Locations" class="btn-link"/><br/>
+                                        <button name="stock.action_putaway_tree" icon="oi-arrow-right" type="action" string="Putaway Rules" class="btn-link"/>
+                                    </div>
+                                </div>
+                            </setting>
+                            <setting id="use_own_routes" help="Use your own routes" documentation="/applications/inventory_and_mrp/inventory/routes/concepts/use_routes.html" title="Add and customize route operations to process product moves in your warehouse(s): e.g. unload &gt; quality control &gt; stock for incoming products, pick &gt; pack &gt; ship for outgoing products. You can also set putaway strategies on warehouse locations in order to send incoming products into specific child locations straight away (e.g. specific bins, racks).">
+                                <field name="group_stock_adv_location" on_change="1" field_id="group_stock_adv_location_0"/>
+                                <div class="content-group">
+                                    <div class="mt8" invisible="not group_stock_adv_location">
+                                        <button name="243" icon="oi-arrow-right" type="action" string="Set Warehouse Routes" class="btn-link"/>
+                                    </div>
+                                </div>
+                            </setting>
+                            <setting id="categorize_locations" help="Categorize your locations for smarter putaway rules" invisible="not group_stock_multi_locations">
+                                <field name="group_stock_storage_categories" field_id="group_stock_storage_categories_0"/>
+                                <div class="content-group" invisible="not group_stock_storage_categories">
+                                    <div class="mt8">
+                                        <button name="278" icon="oi-arrow-right" type="action" string="Storage Categories" class="btn-link"/>
+                                    </div>
+                                    <div class="mt4">
+                                        <button name="279" icon="oi-arrow-right" type="action" string="Storage Category Capacity" class="btn-link"/>
+                                    </div>
+                                </div>
+                            </setting>
+                        </block>
+                        <block title="Advanced Scheduling" id="schedule_info" invisible="1">
+                            <div id="sale_security_lead"/>
+                            <div id="purchase_po_lead"/>
+                        </block>
+                        <block title="Logistics" name="request_vendor_setting_container">
+                            <setting title="This adds a dropshipping route to apply on products in order to request your vendors to deliver to your customers. A product to dropship will generate a purchase request for quotation once the sales order confirmed. This is a on-demand flow. The requested delivery address will be the customer delivery address and not your warehouse." help="Request your vendors to deliver to your customers" documentation="/applications/inventory_and_mrp/inventory/management/delivery/dropshipping.html">
+                                <field name="module_stock_dropshipping" on_change="1" field_id="module_stock_dropshipping_0"/>
+                            </setting>
+                        </block>
+                    </app>
+                </form>
+
+    </data>
+</odoo>

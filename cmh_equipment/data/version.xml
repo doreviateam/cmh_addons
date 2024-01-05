@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="ev_0" model="equipment.version">
+            <field name="name">_</field>
+        </record>
+        <record id="ev_1" model="equipment.version">
+            <field name="name">PCI V3</field>
+        </record>
+    </data>
+</odoo>

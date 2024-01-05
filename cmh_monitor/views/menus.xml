@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="monitor_action" model="ir.actions.act_window">
+            <field name="name">Equipments</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">equipment.monitor</field>
+            <field name="view_mode">kanban,form,activity</field>
+        </record>
+
+        <record id="monitor_line_action" model="ir.actions.act_window">
+            <field name="name">Equipments*</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">monitor.line</field>
+            <field name="view_mode">tree,activity</field>
+        </record>
+
+        <menuitem id="monitor_line_menu" name="Monitor" action="cmh_monitor.monitor_line_action" parent="cmh_fleet.fleet_root" sequence="4"/>
+        <menuitem id="monitor_menu" name="Equipment" action="cmh_monitor.monitor_action" parent="cmh_equipment.equipment_root" sequence="5"/>
+    </data>
+</odoo>

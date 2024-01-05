@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="stock_action" model="ir.actions.act_window">
+            <field name="name">Stocks</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.picking</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+
+        <menuitem id="stock_root" name="Stock" parent="cmh_project.cmh_root" sequence="15"/>
+        <menuitem id="stock_menu" name="Picking" action="cmh_stock.stock_action" parent="cmh_stock.stock_root"
+                  sequence="10"/>
+    </data>
+</odoo>

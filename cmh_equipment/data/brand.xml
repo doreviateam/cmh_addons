@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="eb_0" model="equipment.brand">
+            <field name="name">_</field>
+        </record>
+        <record id="eb_1" model="equipment.brand">
+            <field name="name">ICT</field>
+        </record>
+    </data>
+</odoo>

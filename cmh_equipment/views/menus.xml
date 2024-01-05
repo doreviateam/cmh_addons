@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Equipment Actions -->
+        <record id="equipment_action" model="ir.actions.act_window">
+            <field name="name">Equipments</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">equipment.equipment</field>
+            <field name="view_mode">tree,form,activity</field>
+        </record>
+
+        <record id="equipment_template_action" model="ir.actions.act_window">
+            <field name="name">Equipments</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">equipment.template</field>
+            <field name="view_mode">kanban,tree,form,activity</field>
+        </record>
+
+        <record id="pos_action" model="ir.actions.act_window">
+            <field name="name">POS Equipments</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">equipment.template</field>
+            <field name="domain">[('equipment_category', '=', '00')]</field>
+        </record>
+
+        <!-- Brand, Brand Model, Version Actions -->
+        <record id="brand_action" model="ir.actions.act_window">
+            <field name="name">Brands</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">equipment.brand</field>
+            <field name="view_mode">tree,form,activity</field>
+        </record>
+
+        <record id="brand_model_action" model="ir.actions.act_window">
+            <field name="name">Models</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">equipment.brand_model</field>
+            <field name="view_mode">tree,form,activity</field>
+        </record>
+
+        <record id="version_action" model="ir.actions.act_window">
+            <field name="name">Versions</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">equipment.version</field>
+            <field name="view_mode">tree,form,activity</field>
+        </record>
+
+        <!-- Menu Items -->
+        <menuitem id="equipment_root" name="Equipment" parent="cmh_project.cmh_root" sequence="10"/>
+
+
+        <menuitem id="configuration_root" name="Configuration" parent="cmh_project.cmh_root" sequence="100"/>
+        <menuitem id="template_root" name="Templates" parent="cmh_equipment.configuration_root" sequence="10"/>
+        
+        <menuitem id="product_model_menu" name="Product" action="cmh_equipment.pos_action"
+                  parent="cmh_equipment.template_root" sequence="10"/>
+
+        <menuitem id="equipment_template_menu" name="Equipment" action="cmh_equipment.equipment_action"
+                  parent="cmh_equipment.template_root" sequence="20"/>
+
+        <menuitem id="base_root" name="Base Models" parent="cmh_equipment.configuration_root" sequence="20"/>
+        <menuitem id="brand_menu" name="Brand" action="cmh_equipment.brand_action" parent="cmh_equipment.base_root"
+                  sequence="10"/>
+        <menuitem id="brand_model_menu" name="Model" action="cmh_equipment.brand_model_action"
+                  parent="cmh_equipment.base_root" sequence="20"/>
+        <menuitem id="version_menu" name="Version" action="cmh_equipment.version_action"
+                  parent="cmh_equipment.base_root" sequence="30"/>
+    </data>
+</odoo>

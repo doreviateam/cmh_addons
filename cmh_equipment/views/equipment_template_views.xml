@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="equipment_template_view_tree" model="ir.ui.view">
+            <field name="name">equipment_template_view_tree</field>
+            <field name="model">equipment.template</field>
+            <field name="arch" type="xml">
+                <tree string="equipment_template_tree">
+                    <field name="equipment_id"/>
+                    <field name="detailed_type"/>
+                    <field name="equipment_category"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="equipment_template_view_kanban" model="ir.ui.view">
+            <field name="name">equipment_template_kanban</field>
+            <field name="model">equipment.template</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <field name="image" widget="image" class="oe_avatar"/>
+                                </div>
+                                <div class="o_kanban_details">
+                                    <strong>
+                                        <field name="equipment_id"/>
+                                    </strong>
+                                    <div name="detailed_type" class="mt-1">
+                                        <b>Type:</b> <field name="detailed_type"/>
+                                    </div>
+                                    <div name="tracking" class="mt-1">
+                                        <b>Tracking:</b> <field name="tracking"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="equipment_template_view_form" model="ir.ui.view">
+            <field name="name">equipment_template_view_form</field>
+            <field name="model">equipment.template</field>
+            <field name="arch" type="xml">
+                <form string="equipment_template_form">
+                    <sheet>
+                        <field name="image" widget="image" class="oe_avatar"/>
+                        <group>
+                            <group>
+                                <field name="equipment_id" widget="selection"/>
+                                <field name="detailed_type"/>
+                            </group>
+                            <group>
+                                <field name="equipment_category"/>
+                                <field name="tracking"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_follower"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

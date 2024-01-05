@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_equipment_user,Access Equipment Readonly,cmh_equipment.model_equipment_equipment,cmh_project.cmh_project_group_user,1,0,0,0
+access_equipment_manager,Access Equipment Manager,cmh_equipment.model_equipment_equipment,cmh_equipment.cmh_equipment_group_manager,1,1,1,1
+access_brand_user,Access Equipment Brand Readonly,cmh_equipment.model_equipment_brand,cmh_project.cmh_project_group_user,1,0,0,0
+access_brand_manager,Access Equipment Brand Manager,cmh_equipment.model_equipment_brand,cmh_equipment.cmh_equipment_group_manager,1,1,1,1
+access_brand_model_user,Access Brand Model Readonly,cmh_equipment.model_equipment_brand_model,cmh_project.cmh_project_group_user,1,0,0,0
+access_brand_model_manager,Access Brand Model Manager,cmh_equipment.model_equipment_brand_model,cmh_equipment.cmh_equipment_group_manager,1,1,1,1
+access_version_user,Access Version Readonly,cmh_equipment.model_equipment_version,cmh_project.cmh_project_group_user,1,0,0,0
+access_version_manager,Access Version Manager,cmh_equipment.model_equipment_version,cmh_equipment.cmh_equipment_group_manager,1,1,1,1
+access_pn_user,Access PN Readonly,cmh_equipment.model_equipment_pn,cmh_project.cmh_project_group_user,1,0,0,0
+access_pn_manager,Access PN Manager,cmh_equipment.model_equipment_pn,cmh_equipment.cmh_equipment_group_manager,1,1,1,1
+access_equipment_template_user,Access Equipment Template Readonly,cmh_equipment.model_equipment_template,cmh_project.cmh_project_group_user,1,0,0,0
+access_equipment_template_manager,Access Equipment Template Manager,cmh_equipment.model_equipment_template,cmh_equipment.cmh_equipment_group_manager,1,1,1,1

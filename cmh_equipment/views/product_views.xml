@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="equipment_template_only_form_view" model="ir.ui.view">
+            <field name="name">equipment.template.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page name="equipment_details" string="Miscellaneous" groups="cmh_equipment.cmh_equipment_group_manager">
+                        <group>
+                            <group>
+                                <field name="equipment_category"/>
+                                <field name="equipment_id"  required="tracking not in ['none', 'lot']" widget="selection"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

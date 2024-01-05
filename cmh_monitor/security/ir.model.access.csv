@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_equipment_monitor_user,Access Equipment Monitor Readonly,cmh_monitor.model_equipment_monitor,cmh_project.cmh_project_group_user,1,0,0,0
+access_cmh_monitor_manager,Access Equipment Monitor Manager,cmh_monitor.model_equipment_monitor,cmh_monitor.cmh_monitor_group_manager,1,1,1,1
+access_cmh_monitor_line_user,Access Equipment Monitor Line Readonly,cmh_monitor.model_monitor_line,cmh_project.cmh_project_group_user,1,0,0,0
+access_cmh_monitor_line_manager,Access Equipment Monitor Line Manager,cmh_monitor.model_monitor_line,cmh_monitor.cmh_monitor_group_manager,1,1,1,1
+
+access_cmh_equipment_option_user,Access Equipment Option Readonly,cmh_monitor.model_equipment_option,cmh_project.cmh_project_group_user,1,0,0,0
+access_cmh_equipment_option_manager,Access Equipment Option Manager,cmh_monitor.model_equipment_option,cmh_monitor.cmh_monitor_group_manager,1,1,1,1

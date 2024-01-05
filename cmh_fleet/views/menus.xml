@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="equipment_action" model="ir.actions.act_window">
+            <field name="name">Equipments</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">equipment.fleet</field>
+            <field name="view_mode">tree,form,activity</field>
+        </record>
+        <menuitem id="fleet_root" name="Monitoring" parent="cmh_project.cmh_root" sequence="20"/>
+        <menuitem id="equipment_menu" name="Equipment fleet" action="cmh_fleet.equipment_action" parent="cmh_fleet.fleet_root" sequence="10"/>
+
+    </data>
+</odoo>

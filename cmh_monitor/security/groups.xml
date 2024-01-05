@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Définir une catégorie de module -->
+        <record model="ir.module.category" id="cmh_monitor_category">
+            <field name="name">CMH Monitor</field>
+            <field name="sequence">4</field>
+        </record>
+
+        <!-- Définir un groupe de sécurité pour le gestionnaire CMH -->
+        <record id="cmh_monitor_group_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="cmh_monitor.cmh_monitor_category"/>
+            <field name="implied_ids" eval="[(4, ref('cmh_equipment.cmh_equipment_group_manager'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+    </data>
+</odoo>
