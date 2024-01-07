@@ -11,7 +11,8 @@ class EquipmentMonitor(models.Model):
     ]
 
     name = fields.Char(related='product_id.name')
-    product_id = fields.Many2one(comodel_name='product.template', required=True)
+    product_id = fields.Many2one(comodel_name='product.template', required=True,
+                                 domain=[])
     image_1920 = fields.Binary(related='product_id.image_1920')
 
     line_ids = fields.One2many(
@@ -48,9 +49,17 @@ class EquipmentLine(models.Model):
     product_id = fields.Many2one(related='equipment_monitor_id.product_id')
     image_1920 = fields.Binary(related='equipment_monitor_id.product_id.image_1920')
     owner_id = fields.Many2one(comodel_name='res.partner')
-    shortname = fields.Char(related='owner_id.shortname')
+    shortname = fields.Char(compute='_compute_shortname')
     option_ids = fields.Many2many('equipment.option', string='Options')
     fullname = fields.Char(compute='_compute_fullname', default='New', string='Equipment')
+
+    @api.depends('owner_id')
+    def _compute_shortname(self):
+        for record in self:
+            if record.owner_id:
+                record.shortname = record.owner_id.shortname or record.owner_id.name
+            else:
+                record.shortname = None
 
     @api.depends('product_id', 'shortname')
     def _compute_fullname(self):

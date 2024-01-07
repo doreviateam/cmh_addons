@@ -1,7 +1,4 @@
-import base64
-
 from odoo import fields, models, api
-from odoo.tools.misc import file_path
 
 
 class Brand(models.Model):
@@ -92,17 +89,14 @@ class Equipment(models.Model):
     version_id = fields.Many2one(comodel_name='equipment.version', string='Version', required=True)
     equipment_category = fields.Selection(
         string='Equipment Category',
-        selection=[('00', 'Pos equipment'),
-                   ('10', 'Other equipment'), ],
+        selection=[
+            ('00', 'Pos equipment'),
+            ('01', 'Pos software'),
+            ('10', 'Other equipment'),
+        ],
         required=True, default='00')
 
     @api.depends('brand_id', 'model_id', 'version_id')
     def _compute_fullname(self):
         for record in self:
-            if record.brand_id and record.model_id and record.version_id:
-                record.name = f"{record.brand_id.name} {record.model_id.name}" \
-                              f" {record.version_id.name}"
-                if len(record.name) > 1:
-                    record.name = f"{record.name}"
-                    if '_' in f"{record.name}":
-                        record.name = record.name.replace('_', ' ')
+            record.name = f"{record.brand_id.name} {record.model_id.name} {record.version_id.name}".replace('_', ' ')

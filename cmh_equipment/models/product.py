@@ -10,8 +10,11 @@ class Product(models.Model):
 
     equipment_category = fields.Selection(
         string='Equipment Category',
-        selection=[('00', 'Pos equipment'),
-                   ('10', 'Other equipment'), ],
+        selection=[
+            ('00', 'Pos equipment'),
+            ('01', 'Pos software'),
+            ('10', 'Other equipment'),
+        ],
         required=True, default='10')
     equipment_id = fields.Many2one('equipment.equipment', string='Equipment Reference')
 
