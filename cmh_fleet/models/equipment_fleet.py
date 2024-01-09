@@ -13,13 +13,24 @@ class EquipmentFleet(models.Model):
     serial_number_id = fields.Many2one(comodel_name='stock.lot', string='Lot/Serial Number', required=True,
                                        ondelete='restrict', readonly=True)
     image_1920 = fields.Binary(related='serial_number_id.product_id.image_1920')
-    product_number = fields.Char()
+    product_number = fields.Char(compute='_compute_product_number')
     ref = fields.Char(related='serial_number_id.ref')
     product_qty = fields.Float(related='serial_number_id.product_qty')
     location_name = fields.Char(related='serial_number_id.location_id.name', string='Location')
     location_id = fields.Many2one(related='serial_number_id.location_id', string='Location Reference')
     product_id = fields.Many2one(related='serial_number_id.product_id')
     equipment_category = fields.Selection(related='serial_number_id.product_id.equipment_category')
+
+    @api.depends('serial_number_id')
+    def _compute_product_number(self):
+        for record in self:
+            monitors = self.env['monitor.line'].search([('serial_number', '=', record.serial_number_id.name)])
+            if monitors:
+                for monitor in monitors:
+                    if monitor.product_number:
+                        record.product_number = monitor.product_number
+            else:
+                record.product_number = ''
 
     @api.model_create_multi
     def create(self, vals_list):

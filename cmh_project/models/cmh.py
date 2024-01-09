@@ -28,3 +28,6 @@ class Partners(models.Model):
         if 'shortname' in vals and vals['shortname']:
             vals['shortname'] = vals['shortname'].upper()
         return super().write(vals)
+
+# pour tout article suivi par serial ou lot (numéro de série ou numéro de lot), je dois vérifier si le serial ou lot number existe dans monitor.line
+# avant de valider une réception, un transfert interne ou une livraison

@@ -48,9 +48,11 @@ class EquipmentLine(models.Model):
     equipment_monitor_id = fields.Many2one(comodel_name='equipment.monitor', string='Equipment Monitor')
     product_id = fields.Many2one(related='equipment_monitor_id.product_id')
     image_1920 = fields.Binary(related='equipment_monitor_id.product_id.image_1920')
-    owner_id = fields.Many2one(comodel_name='res.partner')
-    shortname = fields.Char(compute='_compute_shortname', store=True)
-    option_ids = fields.Many2many('equipment.option', string='Options')
+    owner_id = fields.Many2one(comodel_name='res.partner',
+                               default=lambda self: self.env.company,
+                               index=True, required=True)
+    shortname = fields.Char(compute='_compute_shortname', store=True, index=True)
+    option_ids = fields.Many2many(comodel_name='equipment.option', string='Options')
     fullname = fields.Char(compute='_compute_fullname', default='New', string='Equipment')
 
     @api.depends('owner_id')

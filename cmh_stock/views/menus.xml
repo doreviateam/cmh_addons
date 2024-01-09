@@ -3,10 +3,10 @@
     <data>
 
         <record id="stock_action" model="ir.actions.act_window">
-            <field name="name">Stocks</field>
+            <field name="name">Pickings</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">stock.picking</field>
-            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_mode">tree,form,activity</field>
         </record>
 
 
